@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12</title>
+</head>
+<body>
+    <input class="color" type="text" placeholder="Введите цвет (напр., red или #ff0000)">
+    <button class="btn">Изменить цвет фона</button>
+
+    <script>
+        const colorInput = document.querySelector('.color');
+        const button = document.querySelector('.btn');
+
+        button.addEventListener('click', () => {
+            const newColor = colorInput.value;
+            document.body.style.backgroundColor = newColor;
+        });
+    </script>
+</body>
+</html>
