@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions with HTML</title>
+</head>
+<body>
+
+    <h1>Тестирование функций JavaScript</h1>
+
+    <div>
+        <h2>Задание 1: Число больше 18</h2>
+        <input type="number" id="greater18Input">
+        <button onclick="testGreater18()">Проверить</button>
+        <p id="greater18Result"></p>
+    </div>
+
+    <div>
+        <h2>Задание 2: Четное число</h2>
+        <input type="number" id="evenInput">
+        <button onclick="testEven()">Проверить</button>
+        <p id="evenResult"></p>
+    </div>
+
+    <div>
+        <h2>Задание 3: Перевернуть строку</h2>
+        <input type="text" id="reverseInput">
+        <button onclick="testReverse()">Перевернуть</button>
+        <p id="reverseResult"></p>
+    </div>
+
+    <div>
+        <h2>Задание 4: Палиндром</h2>
+        <input type="text" id="palindromeInput">
+        <button onclick="testPalindrome()">Проверить</button>
+        <p id="palindromeResult"></p>
+    </div>
+
+    <div>
+        <h2>Задание 5: Сумма первой и последней цифр</h2>
+        <input type="number" id="sumFirstLastInput">
+        <button onclick="testSumFirstLast()">Вычислить</button>
+        <p id="sumFirstLastResult"></p>
+    </div>
+
+    <div>
+        <h2>Задание 6: Сумма чисел от 0 до 10</h2>
+        <input type="text" id="sumBetweenInput" placeholder="Введите числа через запятую">
+        <button onclick="testSumBetween()">Вычислить</button>
+        <p id="sumBetweenResult"></p>
+    </div>
+
+    <div>
+        <h2>Задание 7: Уникальные числа</h2>
+        <input type="text" id="uniqueInput" placeholder="Введите числа через запятую">
+        <button onclick="testUnique()">Найти уникальные</button>
+        <p id="uniqueResult"></p>
+    </div>
+
+    <div>
+        <h2>Задание 8: Подсчет гласных</h2>
+        <input type="text" id="vowelInput">
+        <button onclick="testVowelCount()">Подсчитать</button>
+        <p id="vowelResult"></p>
+    </div>
+
+    <div>
+        <h2>Задание 9: Сортировка массива</h2>
+        <input type="text" id="sortInput" placeholder="Введите числа через запятую">
+        <button onclick="testSort()">Сортировать</button>
+        <p id="sortResult"></p>
+    </div>
+
+
+    <script>
+        function isGreater18(number) {
+            return number > 18;
+        }
+
+        function isEven(number) {
+            return number % 2 === 0;
+        }
+
+        function reverseString(str) {
+            return str.split("").reverse().join("");
+        }
+
+        function isPalindrome(str) {
+            const reversedStr = str.split("").reverse().join("");
+            return str === reversedStr;
+        }
+
+        function sumFirstLast(number) {
+            const numStr = number.toString();
+            const firstDigit = parseInt(numStr[0]);
+            const lastDigit = parseInt(numStr[numStr.length - 1]);
+            return firstDigit + lastDigit;
+        }
+
+        function sumBetweenZeroTen(arr) {
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > 0 && arr[i] < 10) {
+                    sum += arr[i];
+                }
+            }
+            return sum;
+        }
+
+        function getUnique(arr) {
+            return Array.from(new Set(arr));
+        }
+
+        function countVowels(str) {
+            const vowels = ['а', 'я', 'о', 'ё', 'у', 'ю', 'ы', 'и', 'э', 'е'];
+            let count = 0;
+            for (let i = 0; i < str.length; i++) {
+                if (vowels.includes(str[i].toLowerCase())) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        function sortArray(arr) {
+            return arr.sort((a, b) => a - b);
+        }
+
+
+
+        function testGreater18() {
+            const num = parseInt(document.getElementById('greater18Input').value);
+            document.getElementById('greater18Result').textContent = isGreater18(num);
+        }
+
+        function testEven() {
+            const num = parseInt(document.getElementById('evenInput').value);
+            document.getElementById('evenResult').textContent = isEven(num);
+        }
+
+        function testReverse() {
+            const str = document.getElementById('reverseInput').value;
+            document.getElementById('reverseResult').textContent = reverseString(str);
+        }
+
+        function testPalindrome() {
+            const str = document.getElementById('palindromeInput').value;
+            document.getElementById('palindromeResult').textContent = isPalindrome(str);
+        }
+
+        function testSumFirstLast() {
+            const num = parseInt(document.getElementById('sumFirstLastInput').value);
+            document.getElementById('sumFirstLastResult').textContent = sumFirstLast(num);
+        }
+
+
+        function testSumBetween() {
+            const inputString = document.getElementById('sumBetweenInput').value;
+            const arr = inputString.split(',').map(Number);
+            document.getElementById('sumBetweenResult').textContent = sumBetweenZeroTen(arr);
+        }
+
+        function testUnique() {
+            const inputString = document.getElementById('uniqueInput').value;
+            const arr = inputString.split(',').map(Number);
+            document.getElementById('uniqueResult').textContent = getUnique(arr).join(', ');
+        }
+
+        function testVowelCount() {
+            const str = document.getElementById('vowelInput').value;
+            document.getElementById('vowelResult').textContent = countVowels(str);
+        }
+
+        function testSort() {
+            const inputString = document.getElementById('sortInput').value;
+            const arr = inputString.split(',').map(Number);
+            const sortedArr = sortArray(arr);
+            document.getElementById('sortResult').textContent = sortedArr.join(', ');
+        }
+
+
+    </script>
+
+</body>
+</html>
